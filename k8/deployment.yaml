@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+  namespace: development
+  labels:
+    app: react-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-demo
+  template:
+    metadata:
+      labels:
+        app: react-demo
+    spec:
+      containers:
+      - name: react-demo
+        image: covah/react-k8
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
